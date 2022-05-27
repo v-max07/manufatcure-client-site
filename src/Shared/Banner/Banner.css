@@ -1,0 +1,16 @@
+.banner-button{
+    background-color: rgb(19, 109, 245);
+    color: white;
+    border: none;
+    font-weight: bold;
+    padding: 7px 40px;
+    width: 100%;
+    border-radius: 3px;
+}
+.banner-header{
+    font-weight: bold;
+}
+
+.banner-div{
+    padding: 10px;
+}
