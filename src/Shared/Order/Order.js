@@ -14,7 +14,7 @@ const Order = () => {
     const [service, setService] = useState({});
     // const [services, setServices] = useState([]);
     const [quantity, setQuantity] = useState(1000);
-    fetch(`http://localhost:5000/service/${id}`)
+    fetch(`https://enigmatic-sea-81368.herokuapp.com/service/${id}`)
         .then(res => res.json())
         .then(data => setService(data));
 
@@ -32,7 +32,7 @@ const Order = () => {
                 quantity: quantity,
                 per_price: service.per_price,
             }
-            fetch('http://localhost:5000/order', {
+            fetch('https://enigmatic-sea-81368.herokuapp.com/order', {
                 method: 'POST', // or 'PUT'
                 headers: {
                     'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ const Order = () => {
                     console.log('Success:', data);
                 });
 
-            fetch('http://localhost:5000/order', {
+            fetch('https://enigmatic-sea-81368.herokuapp.com/order', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

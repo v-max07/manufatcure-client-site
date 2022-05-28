@@ -8,7 +8,7 @@ const UserOrder = () => {
     const [user] = useAuthState(auth)
     const [order, setOrder] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/order/${user?.email}`)
+        fetch(`https://enigmatic-sea-81368.herokuapp.com/order/${user?.email}`)
             .then(res => res.json())
             .then(data => setOrder(data))
     }, [user]);
@@ -23,7 +23,7 @@ const UserOrder = () => {
                             <th>Name</th>
                             <th>Price</th>
                             <th>Quantity</th>
-                            <th>Delete</th>             
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -11,7 +11,7 @@ const Google = () => {
             email: User.email,
 
         }
-        fetch(`http://localhost:5000/User/${User.email}`, {
+        fetch(`https://enigmatic-sea-81368.herokuapp.com/User/${User.email}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

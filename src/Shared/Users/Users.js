@@ -17,7 +17,7 @@ const Users = () => {
       name: single?.name,
       role: "admin",
     }
-    fetch(`http://localhost:5000/User/admin/${single?.email}`, {
+    fetch(`https://enigmatic-sea-81368.herokuapp.com/User/admin/${single?.email}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -28,7 +28,7 @@ const Users = () => {
       .then(data => console.log(data))
   }
 
-  fetch('http://localhost:5000/users')
+  fetch('https://enigmatic-sea-81368.herokuapp.com/users')
     .then(res => res.json())
     .then(data => setUsers(data))
   const remove = id => {
@@ -38,7 +38,7 @@ const Users = () => {
       name: single?.name,
 
     }
-    fetch(`http://localhost:5000/User/admin/${single?.email}`, {
+    fetch(`https://enigmatic-sea-81368.herokuapp.com/User/admin/${single?.email}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

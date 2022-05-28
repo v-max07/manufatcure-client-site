@@ -12,7 +12,7 @@ const Dashboard = () => {
 
     const [identiy, setIdenti] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/users')
+        fetch('https://enigmatic-sea-81368.herokuapp.com/users')
             .then(res => res.json())
             .then(data => setUsers(data))
     }, [User])

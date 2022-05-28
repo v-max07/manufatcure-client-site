@@ -59,7 +59,7 @@ const Signup = () => {
         }
 
         // load a single user using email
-        fetch(`http://localhost:5000/User/${User.email}`, {
+        fetch(`https://enigmatic-sea-81368.herokuapp.com/User/${User.email}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -112,7 +112,7 @@ const Signup = () => {
                             <Button variant="primary" type="submit" >
                                 SignUp
                             </Button>
-                            
+
                         </Form>
                         <Google></Google>
                     </Col>
