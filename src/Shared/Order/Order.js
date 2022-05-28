@@ -53,6 +53,8 @@ const Order = () => {
             })
                 .then(res => res.json())
                 .then(data => console.log(data))
+
+            alert("Yea!! Order Done.");
         }
 
     }
