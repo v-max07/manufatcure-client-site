@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate, } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import Google from '../../../Shared/Google/Google';
 
 const Login = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
     const [User] = useAuthState(auth)
     const [
         signInWithEmailAndPassword,
@@ -13,8 +15,6 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
-    let navigate = useNavigate();
-    let location = useLocation();
 
     let from = location.state?.from?.pathname || "/";
 
@@ -27,8 +27,8 @@ const Login = () => {
         setPassword(event.target.value)
     }
     const submit = event => {
-        event.preventDefault()
-        signInWithEmailAndPassword(email, password)
+        event.preventDefault();
+        signInWithEmailAndPassword(email, password);
         navigate(from, { replace: true });
     }
     if (User) {
@@ -71,9 +71,6 @@ const Login = () => {
                             <Button variant="primary" type="submit" >
                                 SignIn
                             </Button>
-                            {
-                                Error ? <p>{Error}</p> : ''
-                            }
                         </Form>
                         <Google></Google>
                     </Col>
