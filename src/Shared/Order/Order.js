@@ -11,26 +11,35 @@ const Order = () => {
     const { id } = useParams();
     const [error, setError] = useState('');
     const [restocks, setRestock] = useState(0)
-    const [service, setService] = useState({});
-    // const [services, setServices] = useState([]);
+    const [service, setService] = useState();
+    const [services, setServices] = useState([]);
     const [quantity, setQuantity] = useState(1000);
-    fetch(`https://enigmatic-sea-81368.herokuapp.com/service/${id}`)
+    fetch(`https://enigmatic-sea-81368.herokuapp.com/available`)
         .then(res => res.json())
-        .then(data => setService(data));
+        .then(data => setServices(data));
+    const product = [];
+    if (services) {
+        console.log(services)
+        const single = services?.find(u => u._id === id)
 
+        if (single) {
+            product.push(single)
+        }
+    }
+    console.log(product[0]?.quantity)
     const submit = event => {
         event.preventDefault()
-        if (quantity > service.quantity) {
-            setError('Sorry, product not available!')
+        if (quantity > product[0]?.quantity) {
+            setError('not available')
         }
 
         else {
             const booking = {
                 userName: user?.displayName,
                 email: user?.email,
-                name: service?.name,
+                name: product[0]?.name,
                 quantity: quantity,
-                per_price: service.per_price,
+                per_price: product[0]?.per_price,
             }
             fetch('https://enigmatic-sea-81368.herokuapp.com/order', {
                 method: 'POST', // or 'PUT'
@@ -53,8 +62,8 @@ const Order = () => {
             })
                 .then(res => res.json())
                 .then(data => console.log(data))
-
-            alert("Yea!! Order Done.");
+            
+            alert("Yea! Order done.")
         }
 
     }
@@ -68,18 +77,16 @@ const Order = () => {
 
     }
 
-
-
     return (
         <div>
             <Row className='w-100 mt-5'>
                 <Col md="10" className='mx-auto d-flex'>
                     <Col>
                         <div className='card-container border'>
-                            <img className='text-center w-100' src={service.picture} alt="" />
-                            <h2 className='text-center'>{service.name}</h2>
-                            <p>{service.description}</p>
-                            <p className='fw-bold' style={{ color: '#6554ed', fontSize: '18px' }}>Available : {service.quantity}</p>
+                            <img className='text-center w-100' src={product[0]?.picture} alt="" />
+                            <h2 className='text-center'>{product[0]?.name}</h2>
+                            <p>{product[0]?.description}</p>
+                            <p className='fw-bold' style={{ color: '#6554ed', fontSize: '18px' }}>Available : {product[0]?.quantity}</p>
                             <p style={{ fontStyle: 'italic', color: 'red', fontWeight: 'bold' }}>
                                 {
                                     error ? error : ''
@@ -110,7 +117,7 @@ const Order = () => {
 
                                 <Form.Group className="mb-3" controlId="formBasicPassword">
 
-                                    <Form.Control type="name" placeholder="name" value={service.name} />
+                                    <Form.Control type="name" placeholder="name" value={product[0]?.name} />
                                 </Form.Group>
 
 
@@ -120,7 +127,7 @@ const Order = () => {
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="formBasicPassword">
                                     <p>per-price</p>
-                                    <Form.Control type="number" placeholder="you can order getter than 1000" value={service.per_price} />
+                                    <Form.Control type="number" placeholder="you can order getter than 1000" value={product[0]?.per_price} />
                                 </Form.Group>
 
                                 <Button variant="primary" type="submit">
