@@ -11,6 +11,7 @@ import Login from './components/Pages/Login/Login';
 import Signup from './components/Pages/Signup/Signup';
 import Header from './Shared/Header';
 import Order from './Shared/Order/Order';
+import Payment from './Shared/Payment/Payment';
 import Profile from './Shared/Profile/Profile';
 import Required from './Shared/Required/Required';
 import Users from './Shared/Users/Users';
@@ -30,6 +31,7 @@ function App() {
             <Route path='users' element={<Users></Users>}></Route>
             <Route path='order' element={<UserOrder></UserOrder>}></Route>
             <Route path='profile' element={<Profile></Profile>}></Route>
+            <Route path='payment' element={<Payment></Payment>} />
           </Route>
           <Route path='/order/:id' element={
             <Required>
