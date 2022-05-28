@@ -33,6 +33,8 @@ const Login = () => {
         signInWithEmailAndPassword(email, password)
 
     }
+
+    // put user in server site
     if (User) {
         const currentUser = {
             email: User.email,
