@@ -74,7 +74,7 @@ const Login = () => {
                             </Form.Group>
                             <p>I have no account!<Link className='link text-primary fw-bold' to='/signin'> Signup</Link></p>
 
-                            <p className='text-danger'>
+                            <p className='text-danger fw-bold'>
                                 {
                                     error ? error.message : ''
                                 }
