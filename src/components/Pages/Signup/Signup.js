@@ -43,7 +43,7 @@ const Signup = () => {
             await updateProfile({ displayName: name });
         }
         else {
-            setError('password dont match')
+            setError('Oppos! Password dont match !!')
         }
 
 
@@ -98,12 +98,15 @@ const Signup = () => {
                                 <Form.Control onBlur={confirmhandler} type="password" placeholder="Password" required />
                             </Form.Group>
                             <p>I have already an account! <Link className='link text-primary fw-bold' to='/login'>Login</Link></p>
+                            <p className='text-danger fw-bold'>
+                                {
+                                    Error ? <p>{Error}</p> : ''
+                                }
+                            </p>
                             <Button variant="primary" type="submit" >
                                 SignUp
                             </Button>
-                            {
-                                Error ? <p>{Error}</p> : ''
-                            }
+                            
                         </Form>
                         <Google></Google>
                     </Col>
