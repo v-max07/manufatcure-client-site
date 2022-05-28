@@ -4,6 +4,7 @@ import { useAuthState, useCreateUserWithEmailAndPassword, useUpdateProfile } fro
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import Google from '../../../Shared/Google/Google';
+import Loading from '../Loading/Loading';
 
 const Signup = () => {
     const [updateProfile, updating, errror] = useUpdateProfile(auth);
@@ -69,6 +70,9 @@ const Signup = () => {
             })
         navigate('/')
 
+    }
+    if (loading) {
+        return <Loading></Loading>
     }
     return (
         <div>

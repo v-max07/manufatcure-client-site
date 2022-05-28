@@ -25,7 +25,7 @@ const Google = () => {
 
     }
     if (loading) {
-        <Loading></Loading>
+        return <Loading></Loading>
     }
     return (
         <div className=' p-5'>
