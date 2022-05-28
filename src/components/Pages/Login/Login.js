@@ -53,6 +53,8 @@ const Login = () => {
             })
         navigate(from, { replace: true });
     }
+
+    // if loading the page load this component!!!
     if (loading) {
         return <Loading></Loading>
     }
