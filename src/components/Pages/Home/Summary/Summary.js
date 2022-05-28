@@ -9,7 +9,7 @@ const Summary = () => {
     return (
         <div className='py-5'>
             <Container>
-                <h3 className='py-3 text-center' style={{marginBottom :'50px'}}>Business summary</h3>
+                <h2 className='py-3 text-center' style={{marginBottom :'50px'}}>Business summary</h2>
                 <Row>
                     <Col md="4">
                         <Container>

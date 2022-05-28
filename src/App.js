@@ -1,6 +1,8 @@
 import { Container } from 'react-bootstrap';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import Blogs from './components/Pages/Blogs/Blogs';
+import Contact from './components/Pages/Contact/Contact';
 import Dashboard from './components/Pages/Dashboard/Dashboard';
 import UserOrder from './components/Pages/Dashboard/UserOrder/UserOrder';
 import Footer from './components/Pages/Home/Footer/Footer';
@@ -22,6 +24,8 @@ function App() {
           <Route path='/' element={<Home></Home>}></Route>
           <Route path='/signin' element={<Signup></Signup>}></Route>
           <Route path='/login' element={<Login></Login>}></Route>
+          <Route path='/blogs' element={<Blogs></Blogs>}></Route>
+          <Route path='/contact' element={<Contact></Contact>}></Route>
           <Route path='/dashboard' element={<Dashboard></Dashboard>}>
             <Route path='users' element={<Users></Users>}></Route>
             <Route path='order' element={<UserOrder></UserOrder>}></Route>

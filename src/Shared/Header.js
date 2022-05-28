@@ -1,13 +1,20 @@
 import React from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../firebase.init';
 import { signOut } from 'firebase/auth';
 import './Header.css';
 
 const Header = () => {
-  const [user] = useAuthState(auth)
+  const [user] = useAuthState(auth);
+  const navigate = useNavigate();
+
+  const handleSignOut = () => {
+    signOut(auth);
+    navigate('/')
+  }
+
   return (
     <Navbar sticky='top' expand="lg" bg='light' className='mb-5 '>
 
@@ -21,12 +28,14 @@ const Header = () => {
             navbarScroll
           >
             <Link className='link' to='/'>Home</Link>
+            <Link className='link' to='/blogs'>Blogs</Link>
+            <Link className='link' to='/Contact'>Contact</Link>
             {
               user ? <Link className='link' to='/dashboard'>Dashboard</Link> : ''
             }
 
             {
-              user ? <Button onClick={() => signOut(auth)}>SignOut</Button> : <Link className='link' to='/signin'>SignIn</Link>
+              user ? <Button onClick={handleSignOut}>SignOut</Button> : <Link className='link' to='/signin'>SignIn</Link>
             }
 
           </Nav>

@@ -97,9 +97,9 @@ const Signup = () => {
 
                                 <Form.Control onBlur={confirmhandler} type="password" placeholder="Password" required />
                             </Form.Group>
-                            <p>if you new please <Link className='link' to='/login'>Login</Link></p>
+                            <p>I have already an account! <Link className='link text-primary fw-bold' to='/login'>Login</Link></p>
                             <Button variant="primary" type="submit" >
-                                Submit
+                                SignUp
                             </Button>
                             {
                                 Error ? <p>{Error}</p> : ''

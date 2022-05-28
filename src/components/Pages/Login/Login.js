@@ -20,10 +20,10 @@ const Login = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const emailhandler = event => {
+    const emailHandler = event => {
         setEmail(event.target.value);
     }
-    const passwordhandler = event => {
+    const passwordHandler = event => {
         setPassword(event.target.value)
     }
     const submit = event => {
@@ -59,17 +59,17 @@ const Login = () => {
                         <Form onSubmit={submit}>
                             <Form.Group className="mb-3" controlId="formBasicEmail">
 
-                                <Form.Control onBlur={emailhandler} type="email" placeholder="Enter email" required />
+                                <Form.Control onBlur={emailHandler} type="email" placeholder="Enter email" required />
 
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicPassword">
 
-                                <Form.Control onBlur={passwordhandler} type="password" placeholder="Password" required />
+                                <Form.Control onBlur={passwordHandler} type="password" placeholder="Password" required />
                             </Form.Group>
-                            <p>if you new please <Link className='link' to='/signin'>Signup</Link></p>
+                            <p>I have no account!<Link className='link text-primary fw-bold' to='/signin'> Signup</Link></p>
                             <Button variant="primary" type="submit" >
-                                Submitt
+                                SignIn
                             </Button>
                             {
                                 Error ? <p>{Error}</p> : ''

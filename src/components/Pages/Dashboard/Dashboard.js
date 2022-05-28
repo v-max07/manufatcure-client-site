@@ -7,7 +7,7 @@ import './Dashboard.css';
 
 const Dashboard = () => {
 
-    const [users, setUsers] = useState([])
+    const [users, setUsers] = useState([]);
     const [User] = useAuthState(auth);
 
     const [identiy, setIdenti] = useState([]);
@@ -20,19 +20,16 @@ const Dashboard = () => {
     if (ami) {
         const identity = users.find(u => u.email === User?.email);
         identiy.push(identity)
-
-    }
+    };
 
     return (
         <Container>
-
             <Row>
                 <Col md="12">
                     {
-                        identiy[0]?.role === 'admin' && <Link className='link-btn' to='/dashboard/users'>Users</Link>
+                        identiy[5]?.role === 'admin' && <Link className='link-btn' to='/dashboard/users'>Users</Link>
 
                     }
-
                     <Link className='link-btn' to='/dashboard/order'>order</Link>
                     <Link className='link-btn' to='/dashboard/profile'>profile</Link>
                     <Link className='link-btn' to='/dashboard/payment'>payment</Link>
