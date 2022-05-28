@@ -57,6 +57,8 @@ const Signup = () => {
             name: User?.displayName,
 
         }
+
+        // load a single user using email
         fetch(`http://localhost:5000/User/${User.email}`, {
             method: 'PUT',
             headers: {
