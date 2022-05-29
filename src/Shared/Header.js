@@ -30,6 +30,7 @@ const Header = () => {
             <Link className='link' to='/'>Home</Link>
             <Link className='link' to='/blogs'>Blogs</Link>
             <Link className='link' to='/Contact'>Contact</Link>
+            <Link className='link' to='/myProfile'>My Profile</Link>
             {
               user ? <Link className='link' to='/dashboard'>Dashboard</Link> : ''
             }

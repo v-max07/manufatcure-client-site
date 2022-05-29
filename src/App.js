@@ -8,6 +8,8 @@ import UserOrder from './components/Pages/Dashboard/UserOrder/UserOrder';
 import Footer from './components/Pages/Home/Footer/Footer';
 import Home from './components/Pages/Home/Home';
 import Login from './components/Pages/Login/Login';
+import MyProfile from './components/Pages/MyProfile/MyProfile';
+import NotFound from './components/Pages/NotFound/NotFound';
 import Signup from './components/Pages/Signup/Signup';
 import Header from './Shared/Header';
 import Order from './Shared/Order/Order';
@@ -26,6 +28,7 @@ function App() {
           <Route path='/signin' element={<Signup></Signup>}></Route>
           <Route path='/login' element={<Login></Login>}></Route>
           <Route path='/blogs' element={<Blogs></Blogs>}></Route>
+          <Route path='/myProfile' element={ <MyProfile></MyProfile> }></Route>
           <Route path='/contact' element={<Contact></Contact>}></Route>
           <Route path='/dashboard' element={<Dashboard></Dashboard>}>
             <Route path='users' element={<Users></Users>}></Route>
@@ -38,6 +41,7 @@ function App() {
               <Order></Order>
             </Required>
           }></Route>
+          <Route path='*' element={<NotFound></NotFound>}></Route>
         </Routes>
       </Container>
       <Footer></Footer>
