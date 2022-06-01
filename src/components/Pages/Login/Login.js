@@ -6,7 +6,6 @@ import auth from '../../../firebase.init';
 import Google from '../../../Shared/Google/Google';
 import Loading from '../Loading/Loading';
 
-
 const Login = () => {
     const [User] = useAuthState(auth)
     const [
@@ -33,14 +32,12 @@ const Login = () => {
         signInWithEmailAndPassword(email, password)
 
     }
-
-    // put user in server site
     if (User) {
         const currentUser = {
             email: User.email,
 
         }
-        fetch(`https://blooming-basin-80189.herokuapp.com/User/${User.email}`, {
+        fetch(`https://enigmatic-sea-81368.herokuapp.com/User/${User.email}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -53,8 +50,6 @@ const Login = () => {
             })
         navigate(from, { replace: true });
     }
-
-    // if loading the page load this component!!!
     if (loading) {
         return <Loading></Loading>
     }
@@ -76,17 +71,16 @@ const Login = () => {
 
                                 <Form.Control onBlur={passwordhandler} type="password" placeholder="Password" required />
                             </Form.Group>
-                            <p>I have no account!<Link className='link text-primary fw-bold' to='/signin'> Signup</Link></p>
-
-                            <p className='text-danger fw-bold'>
+                            <p>I have no account! <Link className='link text-primary fw-bold' to='/signin'>Signup</Link></p>
+                            <p className='text-danger'>
                                 {
                                     error ? error.message : ''
                                 }
                             </p>
-
                             <Button variant="primary" type="submit" >
                                 SignIn
                             </Button>
+
                         </Form>
                         <Google></Google>
                     </Col>

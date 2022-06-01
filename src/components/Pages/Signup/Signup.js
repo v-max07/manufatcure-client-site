@@ -44,18 +44,17 @@ const Signup = () => {
             await updateProfile({ displayName: name });
         }
         else {
-            setError('Oppos! Password dont match !!')
+            setError('Oops! Password does not match !!')
         }
 
 
     }
 
-    if (User) {
+    if (User?.displayName) {
         console.log(User);
         const currentUser = {
             email: User?.email,
             name: User?.displayName,
-
         }
 
         // load a single user using email

@@ -4,6 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useParams } from 'react-router-dom';
 import auth from '../../firebase.init';
 import './Order.css';
+import { toast } from 'react-toastify';
 
 const Order = () => {
 
@@ -30,7 +31,7 @@ const Order = () => {
     const submit = event => {
         event.preventDefault()
         if (quantity > product[0]?.quantity) {
-            setError('not available')
+            setError('*Sorry Product Quantity is too high!!! Not available.')
         }
 
         else {
@@ -41,8 +42,8 @@ const Order = () => {
                 quantity: quantity,
                 per_price: product[0]?.per_price,
             }
-            fetch('https://enigmatic-sea-81368.herokuapp.com/order', {
-                method: 'POST', // or 'PUT'
+            fetch(`https://enigmatic-sea-81368.herokuapp.com/order/${product[0].name}`, {
+                method: 'PUT', // or 'PUT'
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -62,8 +63,8 @@ const Order = () => {
             })
                 .then(res => res.json())
                 .then(data => console.log(data))
-            
-            alert("Yea! Order done.")
+
+            toast("Yea! Order done.")
         }
 
     }
@@ -83,24 +84,23 @@ const Order = () => {
                 <Col md="10" className='mx-auto d-flex'>
                     <Col>
                         <div className='card-container border'>
-                            <img className='text-center w-100' src={product[0]?.picture} alt="" />
-                            <h2 className='text-center'>{product[0]?.name}</h2>
-                            <p>{product[0]?.description}</p>
-                            <p className='fw-bold' style={{ color: '#6554ed', fontSize: '18px' }}>Available : {product[0]?.quantity}</p>
+                            <p className='fw-bold' style={{ color: '#6554ed', fontSize: '18px' }}>Available Quantity : {product[0]?.quantity}</p>
                             <p style={{ fontStyle: 'italic', color: 'red', fontWeight: 'bold' }}>
                                 {
                                     error ? error : ''
                                 }
                             </p>
-
+                            <img className='text-center w-100' src={product[0]?.picture} alt="" />
+                            <h2 className='text-center'>{product[0]?.name}</h2>
+                            <p>{product[0]?.description}</p>
                         </div>
                     </Col>
                     <Col className='p-5'>
                         <div>
                             <Form.Group controlId="formBasicEmail">
-                                <p>Restock</p>
-                                <Form.Control type="number" onBlur={restock} placeholder="restock" />
-                                <button className='restocksUpdateBtn' onClick={update}>update</button>
+                                <p className='text-success fw-bold'>*If you want to more than 1000 products, you should add....</p>
+                                <Form.Control type="number" onBlur={restock} placeholder="Add quantity...." />
+                                <button className='restocksUpdateBtn' onClick={update}>Add quantity</button>
 
                             </Form.Group>
                             <Form onSubmit={submit}>
@@ -122,7 +122,7 @@ const Order = () => {
 
 
                                 <Form.Group className="mb-3" controlId="formBasicPassword">
-
+                                    <p>Minimum Quantity</p>
                                     <Form.Control type="number" placeholder="you can order getter than 1000" value={quantity} />
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="formBasicPassword">

@@ -19,7 +19,9 @@ const Header = () => {
     <Navbar sticky='top' expand="lg" bg='light' className='mb-5 '>
 
       <Container>
-        <Navbar.Brand href="#" className='fst-italic fw-bold'> <span style={{ color: '#f00f0f' }}>MOTO_</span><span>RAID<img src="https://i.ibb.co/ctrCkJV/icons8-dirt-bike-50.png" alt="" /> </span> </Navbar.Brand>
+        <Navbar.Brand href="#" className='fst-italic fw-bold'> <Link className='link' to='/'>
+          <span style={{ color: '#f00f0f' }}>MOTO_</span><span>RAID<img src="https://i.ibb.co/ctrCkJV/icons8-dirt-bike-50.png" alt="" /> </span>
+        </Link> </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav

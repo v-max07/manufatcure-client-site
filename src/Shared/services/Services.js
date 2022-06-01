@@ -8,7 +8,8 @@ const Services = () => {
         fetch('https://enigmatic-sea-81368.herokuapp.com/available')
             .then(res => res.json())
             .then(data => setServices(data))
-    }, [])
+    }, []);
+
     return (
         <Container>
             <Row>
