@@ -10,6 +10,9 @@ const MyProfile = () => {
                 <Col md="6" className='mx-auto'>
                     <img width={150} src='https://i.ibb.co/B3CQ0GB/me.jpg' alt="" />
                     <h2>S.M. Vusan Debnath</h2>
+                    <h5>Email: vusandebnath09@gmail.com</h5>
+                    <h5>Address: Putia, Shibpur, Narsingdi</h5>
+                    <h5>Phone: 01628440981</h5>
 
 
                     <Row className='mt-5'>
